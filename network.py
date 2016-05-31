@@ -4,7 +4,7 @@ __author__ = 'vicky.han'
 
 
 def test():
-    url = 'http://l-ugcweb.h.beta.cn0.qunar.com:8080/api/h/jiuquan_3156/detail/rank/v1/page/1'
+    url = 'xxxx'
     f = urllib2.urlopen(url)
     response = f.read()
     print(response)
