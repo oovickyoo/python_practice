@@ -87,8 +87,52 @@ def dig_pow(n, p):
         x += int(s[i]) ** (p+i)
     return x/n if x % n == 0 else -1
 
+
+def unique_in_order(iterable):
+    """
+    Unique In Order
+    对输入的序列去重后输出
+    unique_in_order('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+    unique_in_order([1,2,2,3,3])       == [1,2,3]
+    :param iterable:
+    :return:
+    """
+    uni_list=[]
+    if len(iterable) == 0:
+        return uni_list
+    uni_list.append(iterable[0])
+    for i in range(1, len(iterable)):
+        if iterable[i] != uni_list[-1]:
+            uni_list.append(iterable[i])
+    return uni_list
+
+
+def longest_consec(strarr, k):
+    """
+    Consecutive strings
+    You are given an array strarr of strings and an integer k.
+    Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+    longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2) --> "abigailtheta"
+    :param strarr:
+    :param k:
+    :return:
+    """
+    n = len(strarr)
+    if n == 0 or k > n or k <= 0:
+        return ""
+    len_sub_str = n - k + 1
+    longest_sub_str = ''
+    for i in range(0, len_sub_str):
+        sub_str = ''
+        for j in range(0, k):
+            sub_str += strarr[i+j]
+        if len(sub_str)>len(longest_sub_str):
+            longest_sub_str = sub_str
+    return longest_sub_str
+
+
 if __name__ == '__main__':
     # print(my_parse_int(" 12"))
-    print(diamond(-1))
-    # s=diamond(3)
-
+    # print(diamond(-1))
+    # print(unique_in_order('AABBCCCCCCDEEf'))
+    print(longest_consec(["zone", "abigail", "theta", "form", "libe", "zas"], 2))
