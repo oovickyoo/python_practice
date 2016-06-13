@@ -5,7 +5,7 @@ __author__ = 'vicky.han'
 array = [2, 23, 1, 4, 5, 34, 3, 52345, 56]
 
 
-def bubble_sort(array):
+def bubble_sort(arr):
     """
     冒泡排序
     :param array: 排序前的数组
