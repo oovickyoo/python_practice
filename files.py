@@ -20,9 +20,5 @@ def read_by_line():
     for line in f.readlines():
         print(line)
 
-
-
-
-
 if __name__ == '__main__':
     read_files()

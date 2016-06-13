@@ -18,27 +18,28 @@ def solution(number):
     return summary
 
 
-def my_parse_int(string1):
-    string1=string1.strip()
-    for i in range (0, len(string1)):
-        if num(string1[i])==False:
+def my_parse_int(strings):
+    """
+    String to integer conversion
+    You are asked to write a myParseInt method with the following rules:
+    It should make the conversion if the given string only contains a single integer value (and eventually spaces - including tabs, line feeds... - at both ends)
+    For all other strings (including the ones representing float values), it should return NaN
+    It should assume that all numbers are not signed and written in base 10
+    :param strings:
+    :return:
+    """
+    strings = strings.strip()
+    num_list = '0123456789'
+    for i in range(0, len(strings)):
+        count = 0
+        for j in range(0, len(num_list)):
+            if strings[i] == num_list[j]:
+                break
+            else:
+                count += 1
+        if count == 10:
             return 'NaN'
-    return int(string1)
-
-def num(str):
-    list = '0123456789'
-    for i in range(0,len(list)):
-        if str == list[i]:
-            return True
-    return False
-
-
-def my_parse_int1(string1):
-    string1=string1.strip()
-    for i in range(0, len(string1)):
-        if num(string1[i])==False:
-            return 'NaN'
-    return int(string1)
+    return int(strings)
 
 
 def diamond(n):
@@ -47,14 +48,14 @@ def diamond(n):
     :param n:
     :return:diamond_str
     """
-    if n % 2 == 0:
+    if n % 2 == 0 or n < 0:
         return
     count = 1
     diamond_str = ''
     while count < n+1:
         for i in range(0, n/2-count/2):
             diamond_str += ' '
-        for i in range(0,count):
+        for i in range(0, count):
             diamond_str += '*'
         diamond_str += '\n'
         count += 2
@@ -84,11 +85,10 @@ def dig_pow(n, p):
     x = 0
     for i in range(0, len(s)):
         x += int(s[i]) ** (p+i)
-    k = x % n
-    if k == 0:
-        return x/n
-    else:
-        return -1
+    return x/n if x % n == 0 else -1
 
 if __name__ == '__main__':
-    print(dig_pow(89, 1))
+    # print(my_parse_int(" 12"))
+    print(diamond(-1))
+    # s=diamond(3)
+
